@@ -6,6 +6,7 @@
 #'
 #' @importFrom plotly ggplotly
 #' @importFrom tidyverse
+#' @importFrom ggthemes
 #'
 #' @export
 int_reg <- function(mod){

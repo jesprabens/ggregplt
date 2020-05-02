@@ -2,9 +2,10 @@
  Uses ggplot to make diagnostic plots for regression
 
 ## Multiple Regression 
+* with this function you can plug in a multiple regression equation along with its' data set and gives the corresponding VIF values with the correlation matrix in order to diagnose multicollinearity
 
 ```{r}
-MC <- function(dataset, eq){
+MR <- function(dataset, eq){
   xvars <- data.frame(attr(eq$terms, "term.labels"))
   data.from.eq <- dataset  %>% subset(colnames(dataset) == xvars)
   VIF <- vif(eq)

@@ -1,3 +1,16 @@
+#' Calculates VIF and correlation matrix for a given Multiple Regression equation.
+#'
+#' @param dataset The dataset to be used
+#' @param equation A multiple regression equation supplied by user
+#'
+#'
+#' @return Plot and VIF
+#'
+#' @importFrom dplyr ggplot2 car reshape2 knitr irr dplyr
+#' 
+#'
+#' @export
+
 MC <- function(dataset, eq){
   xvars <- data.frame(attr(eq$terms, "term.labels"))
   data.from.eq <- dataset  %>% subset(colnames(dataset) == xvars)
@@ -12,7 +25,6 @@ MC <- function(dataset, eq){
     theme(axis.title.x=element_blank(),
           axis.title.y=element_blank()) + 
     labs(fill = "Corr.")
-  heatmap
     result <- list(heatmap, VIF)
     return(result)
 }

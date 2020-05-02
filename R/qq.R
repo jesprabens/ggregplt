@@ -30,5 +30,7 @@ qq <- function(mod){
     ggtitle("Normal QQ Plot") +
     theme_fivethirtyeight()
 
-  ggplotly(qqp, tooltip = c("Row: ", "text"))
+  g <- ggplotly(qqp, tooltip = c("Row: ", "text"))
+
+  return(g)
 }

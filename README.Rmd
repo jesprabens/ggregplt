@@ -1,5 +1,18 @@
 # ggregplt
  Uses ggplot to make diagnostic plots for regression
+ 
+ ## Installation
+
+You can install the the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("Cal-Poly-Advanced-R/ggregplot")
+```
+
+```{r}
+library(ggregplot)
+```
 
 ## Multiple Regression 
 * with this function you can plug in a multiple regression equation along with its' data set and gives the corresponding VIF values with the correlation matrix in order to diagnose multicollinearity

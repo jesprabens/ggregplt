@@ -1,5 +1,5 @@
 #'
-#' @param mod List output from an lm() call
+#' @param mod lm object
 #'
 #'
 #' @return ggplot object
@@ -13,19 +13,18 @@ qq <- function(mod){
   res <- rstandard(mod)
 
   n = length(res)
-  pquants <- 1:n / n
-  tquants <- qnorm(pquants)
+  pquants <- 1:n / n #evenly spaced
+  tquants <- qnorm(pquants) #theoretical quantiles from normal dist
 
+  y <- res[order(res, decreasing = T)]
+  x <- tquants[order(tquants,decreasing = T)]
 
-  y <- res[order(res, decreasing = T)] #sort x = data values
-  x <- tquants[order(tquants,decreasing = T)] #sort generated values
+  qqdf <- data.frame(x,y)
 
-  qqdf <- data.frame(x,y) #bind together
-
-  qqp <- ggplot(qqdf, aes(x,y, text = row.names(qqdf))) + #x is data values, y is normal values
+  qqp <- ggplot(qqdf, aes(x,y, text = row.names(qqdf))) + #adding row number for labeling
     geom_point() +
     geom_abline() + #fit line y = x
-    xlab("Data Values") +
+    xlab("Sample Quantiles") +
     ylab("Theoretical Qunatiles") +
     ggtitle("Normal QQ Plot") +
     theme_fivethirtyeight()

@@ -6,7 +6,6 @@
 
 ```{r}
 equation <- lm(Sepal.Width~Sepal.Length+Petal.Length, data = iris)
-iris <- iris[,-5]
 MR(iris, equation)
 ```
 

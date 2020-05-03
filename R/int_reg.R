@@ -1,8 +1,8 @@
-#' Creates an interactive regression plot for a given simple linear regression model.
+#' Creates an interactive regression plot for a given regression model.
 #'
 #' @param mod The model that needs to be plotted
 #'
-#' @return Aninteractive plot of the model
+#' @return An interactive plot or plots of the model
 #'
 #' @importFrom plotly ggplotly
 #' @importFrom tidyverse
@@ -10,16 +10,21 @@
 #'
 #' @export
 int_reg <- function(mod){
-  df <- data.frame(mod$model)
+  df <- data.frame(reg2$model)
   names <- colnames(df)
-  predictor <- df[,2]
   response <- df[,1]
-  p <- iris %>%
-    ggplot(aes(x = predictor, y = response)) +
-    geom_point() +
-    geom_smooth(method=lm, se = FALSE) +
-    labs(title = "Regression Plot", x = names[2], y = names[1]) +
-    theme_fivethirtyeight() +
-    theme(axis.title = element_text())
-  ggplotly(p)
+  for(i in 2:length(df)){
+    predictor <- df[,i]
+    p <- df %>%
+      ggplot(aes(x = predictor, y = response)) +
+      geom_point() +
+      geom_smooth(method=lm, se = FALSE) +
+      ggtitle(paste("Regression Plot", names[1] ,"vs.", names[i])) +
+      labs(x = names[i],
+           y = names[1]) +
+      theme_fivethirtyeight() +
+      theme(axis.title = element_text())
+    p_int <- ggplotly(p)
+    print(p_int)
+  }
 }

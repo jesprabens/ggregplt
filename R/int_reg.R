@@ -10,11 +10,19 @@
 #'
 #' @export
 int_reg <- function(mod){
+
   df <- data.frame(reg2$model)
+
   names <- colnames(df)
+
   response <- df[,1]
+
+  # cycles through each predictor
   for(i in 2:length(df)){
+
     predictor <- df[,i]
+
+    # creates a regression plot, response vs predictor
     p <- df %>%
       ggplot(aes(x = predictor, y = response)) +
       geom_point() +
@@ -24,7 +32,12 @@ int_reg <- function(mod){
            y = names[1]) +
       theme_fivethirtyeight() +
       theme(axis.title = element_text())
+
+    # makes the plots interactive
     p_int <- ggplotly(p)
+
     print(p_int)
+
   }
+
 }

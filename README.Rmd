@@ -1,24 +1,51 @@
-# ggregplt
- Uses ggplot to make diagnostic plots for regression
- 
- ## Installation
-
-You can install the the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("Cal-Poly-Advanced-R/ggregplot")
+---
+title: "ggregplt"
+output: 
+  md_document:
+    variant: markdown_github
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-library(ggregplot)
+library(ggregplt)
 ```
 
-## Multiple Regression 
-* with this function you can plug in a multiple regression equation along with its' data set and gives the corresponding VIF values with an interactive correlation matrix in order to diagnose multicollinearity
+We use two datasets to explore this package. One is the Iris dataset, predicting Sepal Length using all other variables. The next is a synthesized dataset with designed linearity, normality, mutlicollinearity and outlier issues.
+
+```{r iris}
+testmod1 <- lm(iris$Sepal.Length ~ iris$Sepal.Width + iris$Petal.Length + iris$Petal.Width + iris$Species)
+
+ranx1 <- runif(100,0,100)
+ranx2 <- 5 * ranx1 + 20* rgamma(100, 2, 2)
+rany1 <- ranx1^2 / 100 + 10 * (rgamma(100, 2, 4) - 4) + ranx2
+ranx1[50] = 20
+rany1[50] = 160
+
+testmod2 <- lm(rany1 ~ ranx1 + ranx2)
+```
 
 ```{r}
+int_reg(mod = testmod1, x = 3)
+int_reg(mod = testmod2, x = 2)
+```
 
-equation <- lm(Sepal.Width~Sepal.Length+Petal.Length, data = iris)
-MR(equation)
+
+QQ
+```{r}
+qq(testmod1)
+qq(testmod2)
+```
+
+Lev
+```{r}
+levplot(testmod1)
+levplot(testmod2)
+```
+
+Res
+```{r}
+resplot(testmod1)
+resplot(testmod2)
 ```

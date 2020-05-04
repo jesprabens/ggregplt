@@ -18,7 +18,7 @@ test_that("int_reg produces a simple linear interactive plot with predcited y", 
 })
 
 
-test_that("multi_reg produces several interactive plots for the y and each x variable", {
+test_that("multi_reg, the function that defaults when multiple linear regression is inputted, produces several interactive plots for the y and each x variable", {
 
   correct_result <- multi_reg(reg2)
 

@@ -5,8 +5,7 @@
 #' @return An interactive plot or plots of the model
 #'
 #' @importFrom plotly ggplotly
-#' @importFrom tidyverse
-#' @importFrom ggthemes
+#' @importFrom ggthemes theme_fivethirtyeight
 #'
 #' @export
 int_reg <- function(mod){

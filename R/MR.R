@@ -6,11 +6,18 @@
 #'
 #' @return Plot and VIF
 #'
-#' @importFrom dplyr ggplot2 car reshape2 knitr irr dplyr viridis ggiraph lmf ggcorrplot plotly
-#' 
+#' @import dplyr
+#' @import car
+#' @reshape2 knitr
+#' @import irr
+#' @import dplyr
+#' @import viridis
+#' @import ggiraph
+#' @import lmf
+#' @import ggcorrplot
+#' @import plotly
 #'
 #' @export
-
 MR <- function(eq){
   dataset <- eq$model[,-1]
   corr <- round(cor(dataset), 1)
@@ -18,9 +25,9 @@ MR <- function(eq){
   p.mat <- cor_pmat(dataset)
   corr.plot <- ggcorrplot(
     corr, hc.order = TRUE, outline.col = "white",
-    p.mat = p.mat, colors = c("#FDE725FF", "#1F968BFF", "#440154FF")) + 
+    p.mat = p.mat, colors = c("#FDE725FF", "#1F968BFF", "#440154FF")) +
     ggtitle("Correlation Matrix")
     result <- list(VIF, ggplotly(corr.plot))
   return(result)
-  
+
 }

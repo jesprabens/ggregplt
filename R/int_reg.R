@@ -1,15 +1,17 @@
 #' Creates an interactive regression plot for a given regression model.
 #'
 #' @param mod The model that needs to be plotted
+#' @param x variable to do the regression on
+#' @param color string to chnage color of regression line. defaults to red
 #'
 #' @return An interactive plot or plots of the model
 #'
 #' @importFrom plotly ggplotly
-#' @importFrom tidyverse
-#' @importFrom ggthemes
+#' @import tidyverse
+#' @import ggthemes
 #'
 #' @export
-int_reg <- function(mod, x = NULL){
+int_reg <- function(mod, x = NULL, color = "red"){
 
   df <- data.frame(mod$model)
 
@@ -18,7 +20,7 @@ int_reg <- function(mod, x = NULL){
   Response <- df[,1]
 
   #only prints out predicted x for simple linear regression
-  if (is.null(x) == FALSE && length(df) == 2){
+  if (!is.null(x) && length(df) == 2){
 
     Predictor <- df[,2]
 
@@ -32,7 +34,7 @@ int_reg <- function(mod, x = NULL){
       ggplot(aes(x = Predictor, y = Response)) +
       geom_point() +
       geom_smooth(method=lm, se = FALSE) +
-      geom_point(x = x, y = pred, size = 4, color = "red") +
+      geom_point(x = x, y = pred, size = 4, color = color) +
       ggtitle(paste("Regression Plot:", names[1] ,"vs.", names[2])) +
       labs(x = names[2],
            y = names[1]) +
@@ -62,9 +64,7 @@ int_reg <- function(mod, x = NULL){
 #'
 #' @return An interactive plot or plots
 #'
-#' @importFrom plotly ggplotly
-#' @importFrom tidyverse
-#' @importFrom ggthemes
+
 multi_reg <- function(mod){
 
   df <- data.frame(mod$model)

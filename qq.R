@@ -6,10 +6,10 @@
 #'
 #' @return g Interactive qqnorm plot of class Plotly
 #'
-#' @import ggplot2
+#' @importFrom ggplot2
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
-#' @import dplyr
+#' @importFrom dplyr
 #'
 #' @export
 #'

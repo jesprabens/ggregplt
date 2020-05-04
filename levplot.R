@@ -1,4 +1,4 @@
-#' Produces an interactive leverage plot from an lm object
+ #' Produces an interactive leverage plot from an lm object
 #'
 #'
 #' @param mod an object of class lm
@@ -7,7 +7,7 @@
 #' @return g Interactive leverage plot of class Plotly
 #'
 #'
-#' @import dplyr
+#' @importFrom dplyr
 #'
 #'
 #' @export

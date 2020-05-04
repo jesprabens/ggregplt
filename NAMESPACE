@@ -3,6 +3,7 @@
 export("%>%")
 export(MR)
 export(VIF_table)
+export(buildplot)
 export(int_reg)
 export(levplot)
 export(qq)

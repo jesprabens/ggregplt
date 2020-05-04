@@ -8,7 +8,7 @@
 #' @return g Interactive residual plot of class plotly
 #'
 #'
-#' @importFrom dplyr
+#' @import dplyr
 #'
 #'
 #' @export

@@ -7,7 +7,7 @@
 #' @return g Interactive leverage plot of class Plotly
 #'
 #'
-#' @importFrom dplyr
+#' @import dplyr
 #'
 #'
 #' @export

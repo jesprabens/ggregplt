@@ -6,17 +6,17 @@
 #'
 #' @return Plot and VIF
 #'
-#' @importFrom dplyr
-#' @importFrom ggplot2
-#' @importFrom car
-#' @importFrom reshape2
-#' @importFrom knitr
-#' @importFrom irr
-#' @importFrom viridis
-#' @importFrom ggiraph
-#' @importFrom lmf
-#' @importFrom ggcorrplot
-#' @importFrom plotly
+#' @import dplyr
+#' @import ggplot2
+#' @import car
+#' @import reshape2
+#' @import knitr
+#' @import irr
+#' @import viridis
+#' @import ggiraph
+#' @import lmf
+#' @import ggcorrplot
+#' @import plotly
 #'
 #' @export
 

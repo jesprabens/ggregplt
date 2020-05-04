@@ -49,10 +49,12 @@ resplot <- function(mod){
 #' @return g Interactive plot of class plotly
 #'
 #'
-#' @importFrom ggplot2
+
+#' @import ggplot2
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
-#' @importFrom dplyr
+#' @import dplyr
+
 #'
 #'
 #' @export
@@ -90,6 +92,4 @@ buildplot <- function(plotdf, ptitle, pxlab, pylab, hlinew = F, makeline = F){
   return(g)
 
 }
-
-
 

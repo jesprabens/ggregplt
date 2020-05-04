@@ -16,7 +16,7 @@ RoxygenNote: 7.1.0
 Suggests: 
     testthat
 Imports: 
-    magrittr
+    magrittr,
     ggplot2,
     plotly,
     ggthemes,

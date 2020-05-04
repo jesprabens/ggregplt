@@ -11,17 +11,16 @@
 #' @export
 int_reg <- function(mod, x = NULL){
 
-
   df <- data.frame(mod$model)
 
   names <- colnames(df)
 
-  response <- df[,1]
+  Response <- df[,1]
 
   #only prints out predicted x for simple linear regression
   if (is.null(x) == FALSE && length(df) == 2){
 
-    predictor <- df[,2]
+    Predictor <- df[,2]
 
     intercept <- mod$coefficients[1]
 
@@ -30,10 +29,10 @@ int_reg <- function(mod, x = NULL){
     pred <- (intercept + predictor_val * x)
 
     p <- df %>%
-      ggplot(aes(x = predictor, y = response)) +
+      ggplot(aes(x = Predictor, y = Response)) +
       geom_point() +
       geom_smooth(method=lm, se = FALSE) +
-      geom_point(aes(x = x, y = pred, size = 4, color = "red")) +
+      geom_point(x = x, y = pred, size = 4, color = "red") +
       ggtitle(paste("Regression Plot:", names[1] ,"vs.", names[2])) +
       labs(x = names[2],
            y = names[1]) +
@@ -47,7 +46,8 @@ int_reg <- function(mod, x = NULL){
 
   } else {
 
-    # this plot is used for multiple regression AND when x is null
+    # this interactive plot is used for multiple regression AND when x is null
+    # no predicted x
     multi_reg(mod)
 
   }
@@ -71,14 +71,14 @@ multi_reg <- function(mod){
 
   names <- colnames(df)
 
-  response <- df[,1]
+  Response <- df[,1]
 
   for(i in 2:length(df)){
 
-    predictor <- df[,i]
+    Predictor <- df[,i]
 
     p <- df %>%
-      ggplot(aes(x = predictor, y = response)) +
+      ggplot(aes(x = Predictor, y = Response)) +
       geom_point() +
       geom_smooth(method=lm, se = FALSE) +
       ggtitle(paste("Regression Plot:", names[1] ,"vs.", names[i])) +

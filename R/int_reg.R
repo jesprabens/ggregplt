@@ -11,45 +11,44 @@
 #' @export
 int_reg <- function(mod, x = NULL){
 
-  if (is.null(x) == FALSE){
 
-    df <- data.frame(mod$model)
+  df <- data.frame(mod$model)
 
-    names <- colnames(df)
+  names <- colnames(df)
 
-    response <- df[,1]
+  response <- df[,1]
 
-    for(i in 2:length(df)){
+  #only prints out predicted x for simple linear regression
+  if (is.null(x) == FALSE && length(df) == 2){
 
-      predictor <- df[,i]
+    predictor <- df[,2]
 
-      intercept <- mod$coefficients[1]
+    intercept <- mod$coefficients[1]
 
-      predictor_val <- mod$coefficients[i]
+    predictor_val <- mod$coefficients[2]
 
-      pred <- (intercept + predictor_val * x)
+    pred <- (intercept + predictor_val * x)
 
-      p <- df %>%
-        ggplot(aes(x = predictor, y = response)) +
-        geom_point() +
-        geom_smooth(method=lm, se = FALSE) +
-        geom_point(aes(x = x, y = pred, size = 4, color = "red")) +
-        ggtitle(paste("Regression Plot", names[1] ,"vs.", names[i])) +
-        labs(x = names[i],
-             y = names[1]) +
-        theme_fivethirtyeight() +
-        theme(axis.title = element_text(),
-              legend.position = "none")
+    p <- df %>%
+      ggplot(aes(x = predictor, y = response)) +
+      geom_point() +
+      geom_smooth(method=lm, se = FALSE) +
+      geom_point(aes(x = x, y = pred, size = 4, color = "red")) +
+      ggtitle(paste("Regression Plot:", names[1] ,"vs.", names[2])) +
+      labs(x = names[2],
+           y = names[1]) +
+      theme_fivethirtyeight() +
+      theme(axis.title = element_text(),
+            legend.position = "none")
 
-      p_int <- ggplotly(p)
+    p_int <- ggplotly(p)
 
-      print(p_int)
-
-    }
+    p_int
 
   } else {
 
-    no_pred_plot(mod)
+    # this plot is used for multiple regression AND when x is null
+    multi_reg(mod)
 
   }
 
@@ -57,7 +56,7 @@ int_reg <- function(mod, x = NULL){
 
 
 
-#' Plots the interactive regression with no predicted x
+#' Plots the interactive simple regression or multiple regression with no predicted x
 #'
 #' @param mod The regression model
 #'
@@ -66,7 +65,7 @@ int_reg <- function(mod, x = NULL){
 #' @importFrom plotly ggplotly
 #' @importFrom tidyverse
 #' @importFrom ggthemes
-no_pred_plot <- function(mod){
+multi_reg <- function(mod){
 
   df <- data.frame(mod$model)
 
@@ -82,7 +81,7 @@ no_pred_plot <- function(mod){
       ggplot(aes(x = predictor, y = response)) +
       geom_point() +
       geom_smooth(method=lm, se = FALSE) +
-      ggtitle(paste("Regression Plot", names[1] ,"vs.", names[i])) +
+      ggtitle(paste("Regression Plot:", names[1] ,"vs.", names[i])) +
       labs(x = names[i],
            y = names[1]) +
       theme_fivethirtyeight() +
@@ -94,17 +93,5 @@ no_pred_plot <- function(mod){
     print(p_int)
 
   }
-
-}
-
-
-
-
-
-
-
-
-
-
 
 }

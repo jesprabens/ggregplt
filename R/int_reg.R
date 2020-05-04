@@ -5,8 +5,7 @@
 #' @return An interactive plot or plots of the model
 #'
 #' @importFrom plotly ggplotly
-#' @importFrom tidyverse
-#' @importFrom ggthemes
+#' @importFrom ggthemes theme_fivethirtyeight
 #'
 #' @export
 int_reg <- function(mod, x = NULL){
@@ -63,8 +62,7 @@ int_reg <- function(mod, x = NULL){
 #' @return An interactive plot or plots
 #'
 #' @importFrom plotly ggplotly
-#' @importFrom tidyverse
-#' @importFrom ggthemes
+#' @importFrom ggthemes theme_fivethirtyeight
 multi_reg <- function(mod){
 
   df <- data.frame(mod$model)

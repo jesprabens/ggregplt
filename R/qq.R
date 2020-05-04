@@ -1,33 +1,44 @@
+#' Produces an interactive leverage plot from an lm object
 #'
-#' @param mod lm object
+#'
+#' @param mod an object of class lm
 #'
 #'
-#' @return ggplot object
+#' @return g Interactive qqnorm plot of class Plotly
 #'
-#' @importFrom ggplot2 ggthemes
-#'
+#' @importFrom ggplot2
+#' @importFrom plotly ggplotly
+#' @importFrom ggthemes theme_fivethirtyeight
+#' @importFrom dplyr
 #'
 #' @export
+#'
+
 
 qq <- function(mod){
+  
   res <- rstandard(mod)
 
   n = length(res)
-  pquants <- 1:n / n #evenly spaced
-  tquants <- qnorm(pquants) #theoretical quantiles from normal dist
+  
+  pquants <- 1:n / n 
+  tquants <- qnorm(pquants) 
 
   y <- res[order(res, decreasing = T)]
   x <- tquants[order(tquants,decreasing = T)]
 
   qqdf <- data.frame(x,y)
 
-  qqp <- ggplot(qqdf, aes(x,y, text = row.names(qqdf))) + #adding row number for labeling
+  qqp <- ggplot(qqdf, aes(x,y, text = row.names(qqdf))) +
     geom_point() +
-    geom_abline() + #fit line y = x
+    geom_abline() + 
     xlab("Sample Quantiles") +
     ylab("Theoretical Qunatiles") +
-    ggtitle("Normal QQ Plot") +
-    theme_fivethirtyeight()
+    ggtitle("Studentized Residual Normal QQ Plot") +
+    scale_fill_viridis_d() +
+    scale_color_viridis_d() +
+    theme_fivethirtyeight() +
+    theme(axis.title = element_text()) 
 
   g <- ggplotly(qqp, tooltip = c("Row: ", "text"))
 

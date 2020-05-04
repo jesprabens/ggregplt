@@ -16,31 +16,26 @@
 
 
 qq <- function(mod){
-  
+
   res <- rstandard(mod)
 
   n = length(res)
-  
-  pquants <- 1:n / n 
-  tquants <- qnorm(pquants) 
+
+  pquants <- 1:n / n
+  tquants <- qnorm(pquants)
 
   y <- res[order(res, decreasing = T)]
   x <- tquants[order(tquants,decreasing = T)]
 
   qqdf <- data.frame(x,y)
 
-  qqp <- ggplot(qqdf, aes(x,y, text = row.names(qqdf))) +
-    geom_point() +
-    geom_abline() + 
-    xlab("Sample Quantiles") +
-    ylab("Theoretical Qunatiles") +
-    ggtitle("Studentized Residual Normal QQ Plot") +
-    scale_fill_viridis_d() +
-    scale_color_viridis_d() +
-    theme_fivethirtyeight() +
-    theme(axis.title = element_text()) 
-
-  g <- ggplotly(qqp, tooltip = c("Row: ", "text"))
+  g <- buildplot(qqdf,
+                 ptitle = "Studentized Residual Normal QQ Plot",
+                 pxlab = "Sample Quantiles",
+                 pylab = "Theoretical Quantiles",
+                 hlinew = .4,
+                 makeline = T)
 
   return(g)
+
 }

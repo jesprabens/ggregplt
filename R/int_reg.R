@@ -6,6 +6,7 @@
 #'
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
+#' @import ggplot2
 #'
 #' @export
 int_reg <- function(mod, x = NULL){
@@ -63,6 +64,7 @@ int_reg <- function(mod, x = NULL){
 #'
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
+#' @import ggplot2
 multi_reg <- function(mod){
 
   df <- data.frame(mod$model)

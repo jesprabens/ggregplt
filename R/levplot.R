@@ -6,10 +6,10 @@
 #'
 #' @return g Interactive leverage plot of class Plotly
 #'
-#' @importFrom ggplot2
+#' @import ggplot2
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
-#' @importFrom dplyr
+#' @import dplyr
 #'
 #'
 #' @export

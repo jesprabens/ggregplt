@@ -6,23 +6,23 @@
 #'
 #' @return g Interactive qqnorm plot of class Plotly
 #'
-#' @importFrom ggplot2
+#' @import ggplot2
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
-#' @importFrom dplyr
+#' @import dplyr
 #'
 #' @export
 #'
 
 
 qq <- function(mod){
-  
+
   res <- rstandard(mod)
 
   n = length(res)
-  
-  pquants <- 1:n / n 
-  tquants <- qnorm(pquants) 
+
+  pquants <- 1:n / n
+  tquants <- qnorm(pquants)
 
   y <- res[order(res, decreasing = T)]
   x <- tquants[order(tquants,decreasing = T)]
@@ -31,14 +31,14 @@ qq <- function(mod){
 
   qqp <- ggplot(qqdf, aes(x,y, text = row.names(qqdf))) +
     geom_point() +
-    geom_abline() + 
+    geom_abline() +
     xlab("Sample Quantiles") +
     ylab("Theoretical Qunatiles") +
     ggtitle("Studentized Residual Normal QQ Plot") +
     scale_fill_viridis_d() +
     scale_color_viridis_d() +
     theme_fivethirtyeight() +
-    theme(axis.title = element_text()) 
+    theme(axis.title = element_text())
 
   g <- ggplotly(qqp, tooltip = c("Row: ", "text"))
 

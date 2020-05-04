@@ -6,6 +6,7 @@
 #'
 #' @return VIF with decision if the value is too high or not
 #'
+
 #' @import dplyr
 #' @import ggplot2
 #' @import car

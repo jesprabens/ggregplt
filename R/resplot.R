@@ -49,10 +49,12 @@ resplot <- function(mod){
 #' @return g Interactive plot of class plotly
 #'
 #'
+
 #' @import ggplot2
 #' @importFrom plotly ggplotly
 #' @importFrom ggthemes theme_fivethirtyeight
 #' @import dplyr
+
 #'
 #'
 #' @export

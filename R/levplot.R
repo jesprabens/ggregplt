@@ -1,4 +1,6 @@
+
 #' Produces an interactive leverage plot from an lm object
+
 #'
 #'
 #' @param mod an object of class lm

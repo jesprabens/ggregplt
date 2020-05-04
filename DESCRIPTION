@@ -6,7 +6,7 @@ Authors@R:
            family = "Esprabens",
            role = c("aut", "cre"),
            email = "jesprabe@calpoly.edu")
-Description: This package uses ggplot 2 and plotly to make interactive regression plots, diagnostic plots, and correlation matrices.
+Description: This package uses ggplot2 and plotly to make interactive regression plots, diagnostic plots, and correlation matrices.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
 Encoding: UTF-8
@@ -17,6 +17,17 @@ Suggests:
     testthat
 Imports: 
     magrittr
-    ggplot2
-    plotly
-    ggthemes
+    ggplot2,
+    plotly,
+    ggthemes,
+    dplyr,
+    plotly,
+    car,
+    ggcorrplot,
+    ggiraph,
+    irr,
+    lmf,
+    viridis
+  
+  
+

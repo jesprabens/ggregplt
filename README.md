@@ -26,6 +26,7 @@ This will prodcue an interactive plot with a predicted value of Sepal.Width when
 ## VIF_table
 This function  allows the user to plug in a multiple regression equation along with its' data set and gives the corresponding VIF values with the correlation matrix in order to diagnose multicollinearity
 
+### Example: VIF_table
 ```{r}
 equation <- lm(Sepal.Width~Sepal.Length+Petal.Length, data = iris)
 VIF_Table(equation, 3)
@@ -36,7 +37,7 @@ This example will produce a dataframe of the VIF values of the predictor variabl
 
 This function  allows the user to plug in a multiple regression equation and returns a corresponding interactive correlation matrix in order to diagnose which variables are causing multicollinearity. 
 
-## Example: MR()
+### Example: MR
 ```{r}
 equation <- lm(Sepal.Width~Sepal.Length+Petal.Length, data = iris)
 MR(iris, equation)

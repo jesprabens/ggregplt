@@ -1,14 +1,15 @@
+#' generates a qqplot
 #'
 #' @param mod lm object
 #'
 #'
 #' @return ggplot object
 #'
-#' @importFrom ggplot2 ggthemes
+#' @importFrom ggplot2 ggplot geom_point geom_abline ggplot
+#' @importFrom ggthemes theme_fivethirtyeight
 #'
 #'
 #' @export
-
 qq <- function(mod){
   res <- rstandard(mod)
 

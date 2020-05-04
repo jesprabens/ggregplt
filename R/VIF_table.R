@@ -6,7 +6,7 @@
 #'
 #' @return VIF with decision if the value is too high or not
 #'
-#' @importFrom dplyr ggplot2 car reshape2 knitr irr dplyr lmf
+#' @import dplyr ggplot2 car reshape2 knitr irr dplyr lmf
 #' 
 #'
 #' @export

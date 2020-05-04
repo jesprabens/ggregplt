@@ -2,10 +2,19 @@ Package: ggregplt
 Title: Creates interactive plots of regression models.
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Jake",
+    c(person(given = "Jake",
            family = "Esprabens",
            role = c("aut", "cre"),
-           email = "jesprabe@calpoly.edu")
+           email = "jesprabe@calpoly.edu"),
+    person(given = "Catherine",
+           family = "Greco",
+           role = c("aut"),
+          email = "doxiechic29@yahoo.com"),
+    person(given = "Tobias",
+           family = "Iven",
+           role = c("aut"),
+           email = "mimumsbum@gmail.com")      
+           )
 Description: This package uses ggplot2 and plotly to make interactive regression plots, diagnostic plots, and correlation matrices.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license

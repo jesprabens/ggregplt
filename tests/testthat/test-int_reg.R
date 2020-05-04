@@ -10,7 +10,7 @@ test_that("int_reg produces a simple linear interactive plot with predcited y", 
   correct_result <- c(3.161398) # the predcited response when 3 is plugged into this regression
 
   test_plot1 <- int_reg(reg1, 3)
-  predicted_value <- test_plot1$x$data[[3]]$y[1]
+  predicted_value <- round(test_plot1$x$data[[3]]$y[1], 6)
 
   my_result <- predicted_value
 
@@ -18,7 +18,7 @@ test_that("int_reg produces a simple linear interactive plot with predcited y", 
 })
 
 
-test_that("multi_reg produces several interactive plots for the y and each x variable", {
+test_that("multi_reg, the function that defaults when multiple linear regression is inputted, produces several interactive plots for the y and each x variable", {
 
   correct_result <- multi_reg(reg2)
 
